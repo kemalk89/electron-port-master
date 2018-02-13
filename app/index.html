@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../node_modules/datatables.net-bs/css/dataTables.bootstrap.css">
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="../node_modules/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="../node_modules/datatables.net-bs/js/dataTables.bootstrap.js"></script>
+    <script src="AppController.js"></script>
+</head>
+<body>
+    <div class="container">
+        <br>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <input id="portNumber" placeholder="Enter a port number or leave empty to show all" class="form-control" name="portNumber" />
+            </div>
+            <div class="col-xs-6">
+                <button id="searchButton" class="btn btn-default">Search</button>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <table id="portTable" class="table"></table>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

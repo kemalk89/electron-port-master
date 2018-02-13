@@ -1,0 +1,21 @@
+{
+  "name": "PortReader",
+  "version": "2018.1.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "electron": "electron --inspect=5858 --debug=5858 ."
+  },
+  "devDependencies": {
+    "electron": "^1.8.2"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "datatables.net": "^1.10.16",
+    "datatables.net-bs": "^1.10.16",
+    "electron-sudo": "^4.0.12",
+    "jquery": "^3.3.1",
+    "photonkit": "^0.1.2",
+    "popper.js": "^1.12.9",
+    "sudo-prompt": "^8.1.0"
+  }
+}
