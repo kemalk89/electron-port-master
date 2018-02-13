@@ -35,17 +35,24 @@ module.exports = {
                 var processName = /\[([\w]+\.[\w]+)\]/gi.exec(item)[1];
                 var processDetail = '';
                 var processDetailMatch = /\n\s+([a-z]+)\s+\n\s+\[/gi.exec(item);
-
                 if (processDetailMatch !== null) {
                     processDetail = processDetailMatch[1];
                 }
+
+                var pid = '';
+                var pidMatch = /\s+([0-9]+)\s+/gi.exec(item);
+                if (pidMatch !== null) {
+                    pid = pidMatch[1];
+                }
+
                 var protocol = matches[1];
 
                 resultList.push({
                     process: processName,
                     details: processDetail,
                     protocol: protocol,
-                    port: currentPortNumber
+                    port: currentPortNumber,
+                    pid: pid
                 });
             }
         }

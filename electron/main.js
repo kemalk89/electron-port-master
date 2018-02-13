@@ -1,6 +1,7 @@
-const {app, BrowserWindow, ipcMain} = require('electron')
-const path = require('path')
-const url = require('url')
+const {app, BrowserWindow, ipcMain} = require('electron');
+const { exec } = require('child_process');
+const path = require('path');
+const url = require('url');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
@@ -32,14 +33,25 @@ function createWindow () {
         var options = {
             name: 'Electron'
         };
-        sudo.exec('netstat -anb', options, function(error, stdout, stderr) {
+        sudo.exec('netstat -anb -o', options, function(error, stdout, stderr) {
             if (error) {
                 throw error;
             }
+
             var result = require('./utils.js').parse(stdout, portNumber);
             win.webContents.send('netstat-results', { resultList: result });
         });
+    });
 
+    ipcMain.on('kill', function(a, pid) {
+        exec('taskkill /f /pid ' + pid, function(err) {
+            var success = true;
+            if (err) {
+                success = false;
+            }
+
+            win.webContents.send('process-killed', { success: success });
+        });
     });
 }
 
