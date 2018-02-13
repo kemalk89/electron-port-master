@@ -32,15 +32,13 @@ function createWindow () {
         var options = {
             name: 'Electron'
         };
-        sudo.exec('netstat -anb', options,
-            function(error, stdout, stderr) {
-                if (error) {
-                    throw error;
-                }
-
-                win.webContents.send('netstat-results', { stdout: stdout, portNumber: portNumber});
+        sudo.exec('netstat -anb', options, function(error, stdout, stderr) {
+            if (error) {
+                throw error;
             }
-        );
+            var result = require('./utils.js').parse(stdout, portNumber);
+            win.webContents.send('netstat-results', { resultList: result });
+        });
 
     });
 }
