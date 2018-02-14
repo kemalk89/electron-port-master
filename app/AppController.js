@@ -32,6 +32,7 @@ var AppController = function() {
             var DataTable = $('#portTable').DataTable({
                 data: AppController.data,
                 paging:   false,
+                searching: false,
                 responsive: true,
                 fixedColumns: true,
                 columns: [
@@ -86,6 +87,10 @@ var AppController = function() {
                 });
 
                 DataTable.draw();
+
+                if (args.resultList.length === 0) {
+                    $('#noProcessedFoundModal').modal('show');
+                }
             });
         }
     };

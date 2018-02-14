@@ -8,13 +8,15 @@ const url = require('url');
 let win;
 
 function createWindow() {
-    win = new BrowserWindow({ width: 100, height: 800 });
+    win = new BrowserWindow({ width: 1000, height: 800 });
 
     win.loadURL(url.format({
         pathname: path.join(__dirname, '../app/index.html'),
         protocol: 'file:',
         slashes: true
     }));
+
+    require('./menu.js').init(win);
 
     win.on('closed', function() {
         win = null;
