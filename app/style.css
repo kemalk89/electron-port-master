@@ -1,0 +1,9 @@
+* {
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+#portTable td {
+    -webkit-user-select: auto;
+    cursor: auto;
+}

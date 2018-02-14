@@ -1,7 +1,9 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, MenuItem } = require('electron');
 const { exec } = require('child_process');
 const path = require('path');
 const url = require('url');
+
+require('electron-context-menu')({});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -28,12 +30,14 @@ function createWindow() {
             name: 'Electron'
         };
         sudo.exec('netstat -anb -o', options, function(error, stdout) {
+            var success = true;
+            var result = [];
             if (error) {
-                throw error;
+                success = false;
+            } else {
+                result = require('./utils.js').parse(stdout, portNumber);
             }
-
-            var result = require('./utils.js').parse(stdout, portNumber);
-            win.webContents.send('netstat-results', { resultList: result });
+            win.webContents.send('netstat-results', { success: success, resultList: result });
         });
     });
 

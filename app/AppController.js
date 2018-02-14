@@ -1,3 +1,5 @@
+'use strict';
+
 var AppController = function() {
 
     function disableSearchBtn() {
@@ -17,7 +19,7 @@ var AppController = function() {
     }
 
     function onSearchProcess() {
-        var portNumber = document.getElementById("portNumber").value;
+        var portNumber = $('#portNumber').val();
         window.require('electron').ipcRenderer.send('search', portNumber);
     }
 
@@ -41,7 +43,7 @@ var AppController = function() {
                     { title: 'Protocol' },
                     { title: 'Port' },
                     { title: 'PID' },
-                    { orderable: false, defaultContent: '<button class="btn btn-xs btn-danger">Kill</button>' }
+                    { orderable: false, defaultContent: '<button class="btn btn-xs btn-danger">Terminate</button>' }
                 ]
             });
 
@@ -88,7 +90,7 @@ var AppController = function() {
 
                 DataTable.draw();
 
-                if (args.resultList.length === 0) {
+                if (args.success && args.resultList.length === 0) {
                     $('#noProcessedFoundModal').modal('show');
                 }
             });
