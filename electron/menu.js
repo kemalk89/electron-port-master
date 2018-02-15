@@ -22,7 +22,10 @@ const template = [
                     dialog.showMessageBox(windowObj, {
                         type: 'info',
                         title: 'About ' + app.getName(),
-                        message: 'Name: ' + app.getName() + '\nVersion: ' + app.getVersion()
+                        message: 'Name: ' + app.getName() +
+                                '\nVersion: ' + app.getVersion() +
+                                '\n\nNode-Version: ' + process.versions.node +
+                                '\nChromium: ' + process.versions.chrome
                     });
                 }
             }
