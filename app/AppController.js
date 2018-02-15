@@ -72,7 +72,9 @@ var AppController = function() {
                 if (args.success) {
                     lastSelectedRow.remove().draw();
                 } else {
+                    $('#killProcessFailedReason').text(args.error);
                     $('#killProcessFailedModal').modal('show');
+
                 }
 
                 enableKillProcessBtn();

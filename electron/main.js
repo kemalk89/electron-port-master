@@ -42,13 +42,13 @@ function createWindow() {
     });
 
     ipcMain.on('kill', function(a, pid) {
-        exec('taskkill /f /pid ' + pid, function(err) {
+        exec('taskkill /f /pid ' + pid, function(err, stdout, stderr) {
             var success = true;
             if (err) {
                 success = false;
             }
 
-            win.webContents.send('process-killed', { success: success });
+            win.webContents.send('process-killed', { success: success, error: stderr });
         });
     });
 }
