@@ -13,4 +13,4 @@ If not already done, install nodejs on your local machine.
 
 1. Clone Repository and navigate to Project Directory
 2. Run in Command Line: `npm i`
-3. Next run in Command Line `npm run electron`
+3. Run in Command Line `npm run electron`
