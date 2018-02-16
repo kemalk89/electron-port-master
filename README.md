@@ -9,6 +9,7 @@ In addition you can terminate respective applications which are blocking the sea
 Therefore there is a simple wrapper around the windows `taskkill /f /pid <pid>` command.
 
 # How to run?
+(If not already done, install nodejs on your local machine)
 1. Clone Repository and navigate to Project Directory
 2. Run in Command Line: `npm i`
 3. Next run in Command Line `npm run electron`
