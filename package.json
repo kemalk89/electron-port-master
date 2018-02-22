@@ -3,10 +3,22 @@
   "version": "2018.1.0",
   "main": "electron/main.js",
   "scripts": {
-    "electron": "electron --inspect=5858 --debug=5858 ."
+    "start": "electron --inspect=5858 --debug=5858 .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "copyright": "Copyright © year ${author}",
+    "appId": "com.kk.portmaster",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "!src"
+    ]
   },
   "devDependencies": {
-    "electron": "^1.8.2"
+    "electron": "^1.8.2",
+    "electron-builder": "^19.53.7"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
